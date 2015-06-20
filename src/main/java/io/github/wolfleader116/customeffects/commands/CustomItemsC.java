@@ -34,8 +34,8 @@ public class CustomItemsC implements CommandExecutor {
 							explosivebow.addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1);
 							explosivebow.addUnsafeEnchantment(Enchantment.DURABILITY, 32767);
 							ItemMeta meta = explosivebow.getItemMeta();
-							meta.setDisplayName("§c§lExplosive Bow");
-							meta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§c§lExplosive Bow"));
+							meta.setDisplayName("Â§cÂ§lExplosive Bow");
+							meta.setLore(Arrays.asList("Â§6" + p.getName() + "Â§b's", "Â§cÂ§lExplosive Bow"));
 							explosivebow.setItemMeta(meta);
 							p.getInventory().addItem(explosivebow);
 							for (Player online : Bukkit.getOnlinePlayers()) {
@@ -46,8 +46,8 @@ public class CustomItemsC implements CommandExecutor {
 							ItemStack jetpack = new ItemStack(Material.GOLD_CHESTPLATE, 1, Short.parseShort("0"));
 							jetpack.addUnsafeEnchantment(Enchantment.DURABILITY, 32767);
 							ItemMeta meta = jetpack.getItemMeta();
-							meta.setDisplayName("§6§lJetpack");
-							meta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§6§lJetpack"));
+							meta.setDisplayName("Â§6Â§lJetpack");
+							meta.setLore(Arrays.asList("Â§6" + p.getName() + "Â§b's", "Â§6Â§lJetpack"));
 							jetpack.setItemMeta(meta);
 							if (p.getInventory().getChestplate() != null) {
 								ItemStack originalchest = p.getInventory().getChestplate();
@@ -64,8 +64,8 @@ public class CustomItemsC implements CommandExecutor {
 							ItemStack jetpackcontrol = new ItemStack(Material.STICK, 1, Short.parseShort("0"));
 							jetpackcontrol.addUnsafeEnchantment(Enchantment.DURABILITY, 32767);
 							ItemMeta meta = jetpackcontrol.getItemMeta();
-							meta.setDisplayName("§6§lJetpack Control Stick");
-							meta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§6§lJetpack Control Stick"));
+							meta.setDisplayName("Â§6Â§lJetpack Control Stick");
+							meta.setLore(Arrays.asList("Â§6" + p.getName() + "Â§b's", "Â§6Â§lJetpack Control Stick"));
 							jetpackcontrol.setItemMeta(meta);
 							p.getInventory().addItem(jetpackcontrol);
 							for (Player online : Bukkit.getOnlinePlayers()) {
@@ -76,8 +76,8 @@ public class CustomItemsC implements CommandExecutor {
 							ItemStack jetpackcontrol = new ItemStack(Material.STICK, 1, Short.parseShort("0"));
 							jetpackcontrol.addUnsafeEnchantment(Enchantment.DURABILITY, 32767);
 							ItemMeta controlmeta = jetpackcontrol.getItemMeta();
-							controlmeta.setDisplayName("§6§lJetpack Control Stick");
-							controlmeta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§6§lJetpack Control Stick"));
+							controlmeta.setDisplayName("Â§6Â§lJetpack Control Stick");
+							controlmeta.setLore(Arrays.asList("Â§6" + p.getName() + "Â§b's", "Â§6Â§lJetpack Control Stick"));
 							jetpackcontrol.setItemMeta(controlmeta);
 							p.getInventory().addItem(jetpackcontrol);
 							for (Player online : Bukkit.getOnlinePlayers()) {
@@ -86,8 +86,8 @@ public class CustomItemsC implements CommandExecutor {
 							ItemStack jetpack = new ItemStack(Material.GOLD_CHESTPLATE, 1, Short.parseShort("0"));
 							jetpack.addUnsafeEnchantment(Enchantment.DURABILITY, 32767);
 							ItemMeta jetpackmeta = jetpack.getItemMeta();
-							jetpackmeta.setDisplayName("§6§lJetpack");
-							jetpackmeta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§6§lJetpack"));
+							jetpackmeta.setDisplayName("Â§6Â§lJetpack");
+							jetpackmeta.setLore(Arrays.asList("Â§6" + p.getName() + "Â§b's", "Â§6Â§lJetpack"));
 							jetpack.setItemMeta(jetpackmeta);
 							if (p.getInventory().getChestplate() != null) {
 								ItemStack originalchest = p.getInventory().getChestplate();

@@ -431,7 +431,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			if (e.getPlayer().getItemInHand().getType() == Material.BOW) {
 				ItemMeta meta = e.getPlayer().getItemInHand().getItemMeta();
 				if (meta.hasDisplayName()) {
-					if (meta.getDisplayName().contains("§c§lExplosive Bow")) {
+					if (meta.getDisplayName().contains("Â§cÂ§lExplosive Bow")) {
 						if (e.getPlayer().hasPermission("customeffects.use")) {
 							if (e.getPlayer().hasPermission("customeffects.explosive")) {
 								Projectile shootarrow = e.getPlayer().launchProjectile(Arrow.class);
@@ -452,14 +452,14 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			} else if (e.getPlayer().getItemInHand().getType() == Material.STICK) {
 				ItemMeta meta = e.getPlayer().getItemInHand().getItemMeta();
 				if (meta.hasDisplayName()) {
-					if (meta.getDisplayName().contains("§6§lJetpack Control Stick")) {
+					if (meta.getDisplayName().contains("Â§6Â§lJetpack Control Stick")) {
 						if (e.getPlayer().hasPermission("customeffects.use")) {
 							if (e.getPlayer().getInventory().getChestplate() != null) {
 								ItemStack jetpack = e.getPlayer().getInventory().getChestplate();
 								ItemMeta jetpackmeta = jetpack.getItemMeta();
 								if (jetpack.getType() == Material.GOLD_CHESTPLATE) {
 									if (jetpackmeta.hasDisplayName()) {
-										if (jetpackmeta.getDisplayName().contains("§6§lJetpack")) {
+										if (jetpackmeta.getDisplayName().contains("Â§6Â§lJetpack")) {
 											int dur = jetpack.getDurability();
 											if (dur < 112) {
 												Vector direction = e.getPlayer().getLocation().getDirection();
