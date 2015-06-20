@@ -1,0 +1,16 @@
+name: CustomEffects
+author: WolfLeader116
+main: io.github.wolfleader116.customeffects.CustomEffects
+version: 1.0
+description: CustomEffects plugin.
+depend: [WolfAPI]
+commands:
+  customitems:
+    description: Lets the player get custom items.
+permissions:
+  customeffects.*:
+    description: Gives the player access to all customeffects features.
+    children:
+      customeffects.use: true
+  customeffects.use:
+    description: Allows the player to use the custom items.
