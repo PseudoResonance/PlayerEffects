@@ -296,12 +296,12 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			final Location loc = online.getLocation();
 			Location loca = loc;
 			loca.setX(loca.getX() + 1);
-			loca.setX(loca.getY() + 2.1);
-			if (online.hasPermission("customeffects.circle.lava")) {
+			loca.setY(loca.getY() + 2.1);
+			if (online.hasPermission("customeffects.circle.water")) {
 				for (Player rec : Bukkit.getOnlinePlayers()) {
 					Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 				}
-			} else if (online.hasPermission("customeffects.circle.water")) {
+			} else if (online.hasPermission("customeffects.circle.lava")) {
 				for (Player rec : Bukkit.getOnlinePlayers()) {
 					Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 				}
@@ -310,13 +310,13 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() + 0.7);
-					loca.setX(loca.getY() + 2.1);
+					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() + 0.7);
-					if (online.hasPermission("customeffects.circle.lava")) {
+					if (online.hasPermission("customeffects.circle.water")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
-					} else if (online.hasPermission("customeffects.circle.water")) {
+					} else if (online.hasPermission("customeffects.circle.lava")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
@@ -326,13 +326,13 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
 					Location loca = loc;
-					loca.setX(loca.getY() + 2.1);
+					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() + 1);
-					if (online.hasPermission("customeffects.circle.lava")) {
+					if (online.hasPermission("customeffects.circle.water")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
-					} else if (online.hasPermission("customeffects.circle.water")) {
+					} else if (online.hasPermission("customeffects.circle.lava")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
@@ -343,13 +343,13 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() - 0.7);
-					loca.setX(loca.getY() + 2.1);
+					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() + 0.7);
-					if (online.hasPermission("customeffects.circle.lava")) {
+					if (online.hasPermission("customeffects.circle.water")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
-					} else if (online.hasPermission("customeffects.circle.water")) {
+					} else if (online.hasPermission("customeffects.circle.lava")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
@@ -360,12 +360,12 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() - 1);
-					loca.setX(loca.getY() + 2.1);
-					if (online.hasPermission("customeffects.circle.lava")) {
+					loca.setY(loca.getY() + 2.1);
+					if (online.hasPermission("customeffects.circle.water")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
-					} else if (online.hasPermission("customeffects.circle.water")) {
+					} else if (online.hasPermission("customeffects.circle.lava")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
@@ -376,13 +376,13 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() - 0.7);
-					loca.setX(loca.getY() + 2.1);
+					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() - 0.7);
-					if (online.hasPermission("customeffects.circle.lava")) {
+					if (online.hasPermission("customeffects.circle.water")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
-					} else if (online.hasPermission("customeffects.circle.water")) {
+					} else if (online.hasPermission("customeffects.circle.lava")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
@@ -392,13 +392,13 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
 					Location loca = loc;
-					loca.setX(loca.getY() + 2.1);
+					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() - 1);
-					if (online.hasPermission("customeffects.circle.lava")) {
+					if (online.hasPermission("customeffects.circle.water")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
-					} else if (online.hasPermission("customeffects.circle.water")) {
+					} else if (online.hasPermission("customeffects.circle.lava")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
@@ -409,13 +409,13 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() + 0.7);
-					loca.setX(loca.getY() + 2.1);
+					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() - 0.7);
-					if (online.hasPermission("customeffects.circle.lava")) {
+					if (online.hasPermission("customeffects.circle.water")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
-					} else if (online.hasPermission("customeffects.circle.water")) {
+					} else if (online.hasPermission("customeffects.circle.lava")) {
 						for (Player rec : Bukkit.getOnlinePlayers()) {
 							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
 						}
