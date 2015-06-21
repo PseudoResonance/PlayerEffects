@@ -39,7 +39,7 @@ public class CustomItemsC implements CommandExecutor {
 							explosivebow.setItemMeta(meta);
 							p.getInventory().addItem(explosivebow);
 							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
+								Particles.plugin.sendParticles(online, Particles.LAVA, (float) p.getLocation().getX(), (float) p.getLocation().getY(), (float) p.getLocation().getZ(), (float) 1, (float) 1, (float) 1, (float) 1, 10);
 							}
 							WolfAPI.message("Got explosive bow!", p, "CustomItems");
 						} else if (args[0].equalsIgnoreCase("Jetpack")) {
@@ -57,7 +57,7 @@ public class CustomItemsC implements CommandExecutor {
 								p.getInventory().setChestplate(jetpack);
 							}
 							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
+								Particles.plugin.sendParticles(online, Particles.LAVA, (float) p.getLocation().getX(), (float) p.getLocation().getY(), (float) p.getLocation().getZ(), (float) 1, (float) 1, (float) 1, (float) 1, 10);
 							}
 							WolfAPI.message("Got jetpack!", p, "CustomItems");
 						} else if (args[0].equalsIgnoreCase("JetpackControl")) {
@@ -69,7 +69,7 @@ public class CustomItemsC implements CommandExecutor {
 							jetpackcontrol.setItemMeta(meta);
 							p.getInventory().addItem(jetpackcontrol);
 							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
+								Particles.plugin.sendParticles(online, Particles.LAVA, (float) p.getLocation().getX(), (float) p.getLocation().getY(), (float) p.getLocation().getZ(), (float) 1, (float) 1, (float) 1, (float) 1, 10);
 							}
 							WolfAPI.message("Got jetpack control stick!", p, "CustomItems");
 						} else if (args[0].equalsIgnoreCase("JetpackSet")) {
@@ -81,7 +81,7 @@ public class CustomItemsC implements CommandExecutor {
 							jetpackcontrol.setItemMeta(controlmeta);
 							p.getInventory().addItem(jetpackcontrol);
 							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
+								Particles.plugin.sendParticles(online, Particles.LAVA, (float) p.getLocation().getX(), (float) p.getLocation().getY(), (float) p.getLocation().getZ(), (float) 1, (float) 1, (float) 1, (float) 1, 10);
 							}
 							ItemStack jetpack = new ItemStack(Material.GOLD_CHESTPLATE, 1, Short.parseShort("0"));
 							jetpack.addUnsafeEnchantment(Enchantment.DURABILITY, 32767);
@@ -97,7 +97,7 @@ public class CustomItemsC implements CommandExecutor {
 								p.getInventory().setChestplate(jetpack);
 							}
 							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
+								Particles.plugin.sendParticles(online, Particles.LAVA, (float) p.getLocation().getX(), (float) p.getLocation().getY(), (float) p.getLocation().getZ(), (float) 1, (float) 1, (float) 1, (float) 1, 10);
 							}
 							WolfAPI.message("Got jetpack set!", p, "CustomItems");
 						}
