@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import io.github.wolfleader116.customeffects.commands.CustomItemsC;
 import io.github.wolfleader116.customeffects.tabcompleters.CustomItemsTC;
 import io.github.wolfleader116.wolfapi.Errors;
-import io.github.wolfleader116.wolfapi.Particles;
+import io.github.wolfleader116.wolfapi.ParticleEffect;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -28,7 +28,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 public class CustomEffects extends JavaPlugin implements Listener {
-	
+
 	private static final Logger log = Logger.getLogger("Minecraft");
 
 	public ArrayList<Projectile> arrows = new ArrayList<Projectile>();
@@ -46,225 +46,229 @@ public class CustomEffects extends JavaPlugin implements Listener {
 		getCommand("customitems").setTabCompleter(new CustomItemsTC());
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
 			public void run() {
-				for (Player online : Bukkit.getOnlinePlayers()) {
-					Location loc = online.getLocation();
-					if (online.hasPermission("customeffects.trail.portal")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.PORTAL.display((float) 2, (float) 1, (float) 2, (float) 1, 10, loc, rec);
+				try {
+					for (Player online : Bukkit.getOnlinePlayers()) {
+						Location loc = online.getLocation();
+						if (online.hasPermission("customeffects.trail.portal")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.PORTAL.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 10);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.enchantmenttable")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.ENCHANTMENT_TABLE.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 10);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.cloud")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.CLOUD.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 0, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.note")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.NOTE.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 6);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.redstone")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.REDSTONE.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.redstonered")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.REDSTONE.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 0, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.critmagic")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.CRIT_MAGIC.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 8);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.barrier")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.BARRIER.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 0, 3);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.crit")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.CRIT.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 8);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.driplava")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.DRIP_LAVA.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 10);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.dripwater")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.DRIP_WATER.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 10);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.fireworksspark")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.FIREWORKS_SPARK.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 9);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.flame")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.FLAME.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.heart")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.HEART.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 6);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.lava")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.LAVA.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 4);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.slime")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SLIME.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 8);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.smoke")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SMOKE_NORMAL.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 9);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.snowshovel")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SNOW_SHOVEL.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 8);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.snowball")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SNOWBALL.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 6);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.spell")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SPELL.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.spellinstant")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SPELL_INSTANT.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.spellmob")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SPELL_MOB.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.spellmobambient")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SPELL_MOB_AMBIENT.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.spellwitch")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SPELL_WITCH.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.depth")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.SUSPENDED_DEPTH.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 13);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.villagerangry")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.VILLAGER_ANGRY.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 5);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.villagerhappy")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.VILLAGER_HAPPY.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 5);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.waterbubble")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.WATER_BUBBLE.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 6);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.waterdrop")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.WATER_DROP.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 7);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.watersplash")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.WATER_SPLASH.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 9);
+								}
+							}
+						}
+						if (online.hasPermission("customeffects.trail.waterwake")) {
+							for (Player rec : Bukkit.getOnlinePlayers()) {
+								if (rec != online) {
+									ParticleEffect.WATER_WAKE.sendToPlayer(rec, loc, (float) 2, (float) 1, (float) 2, (float) 1, 9);
+								}
 							}
 						}
 					}
-					if (online.hasPermission("customeffects.trail.enchantmenttable")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.ENCHANTMENT_TABLE.display((float) 2, (float) 1, (float) 2, (float) 1, 10, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.cloud")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.CLOUD.display((float) 2, (float) 1, (float) 2, (float) 0, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.note")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.NOTE.display((float) 2, (float) 1, (float) 2, (float) 1, 6, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.redstone")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.REDSTONE.display((float) 2, (float) 1, (float) 2, (float) 1, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.redstonered")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.REDSTONE.display((float) 2, (float) 1, (float) 2, (float) 0, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.critmagic")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.CRIT_MAGIC.display((float) 2, (float) 1, (float) 2, (float) 1, 8, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.barrier")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.BARRIER.display((float) 2, (float) 1, (float) 2, (float) 0, 3, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.crit")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.CRIT.display((float) 2, (float) 1, (float) 2, (float) 1, 8, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.driplava")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.DRIP_LAVA.display((float) 2, (float) 1, (float) 2, (float) 1, 10, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.dripwater")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.DRIP_WATER.display((float) 2, (float) 1, (float) 2, (float) 1, 10, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.fireworksspark")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.FIREWORKS_SPARK.display((float) 2, (float) 1, (float) 2, (float) 1, 9, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.flame")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.FLAME.display((float) 2, (float) 1, (float) 2, (float) 1, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.heart")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.HEART.display((float) 2, (float) 1, (float) 2, (float) 1, 6, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.lava")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.LAVA.display((float) 2, (float) 1, (float) 2, (float) 1, 4, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.slime")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SLIME.display((float) 2, (float) 1, (float) 2, (float) 1, 8, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.smoke")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SMOKE_NORMAL.display((float) 2, (float) 1, (float) 2, (float) 1, 9, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.snowshovel")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SNOW_SHOVEL.display((float) 2, (float) 1, (float) 2, (float) 1, 8, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.snowball")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SNOWBALL.display((float) 2, (float) 1, (float) 2, (float) 1, 6, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.spell")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SPELL.display((float) 2, (float) 1, (float) 2, (float) 1, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.spellinstant")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SPELL_INSTANT.display((float) 2, (float) 1, (float) 2, (float) 1, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.spellmob")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SPELL_MOB.display((float) 2, (float) 1, (float) 2, (float) 1, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.spellmobambient")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SPELL_MOB_AMBIENT.display((float) 2, (float) 1, (float) 2, (float) 1, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.spellwitch")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SPELL_WITCH.display((float) 2, (float) 1, (float) 2, (float) 1, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.depth")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.SUSPENDED_DEPTH.display((float) 2, (float) 1, (float) 2, (float) 1, 13, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.villagerangry")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.VILLAGER_ANGRY.display((float) 2, (float) 1, (float) 2, (float) 1, 5, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.villagerhappy")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.VILLAGER_HAPPY.display((float) 2, (float) 1, (float) 2, (float) 1, 5, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.waterbubble")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.WATER_BUBBLE.display((float) 2, (float) 1, (float) 2, (float) 1, 6, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.waterdrop")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.WATER_DROP.display((float) 2, (float) 1, (float) 2, (float) 1, 7, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.watersplash")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.WATER_SPLASH.display((float) 2, (float) 1, (float) 2, (float) 1, 9, loc, rec);
-							}
-						}
-					}
-					if (online.hasPermission("customeffects.trail.waterwake")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							if (rec != online) {
-								Particles.WATER_WAKE.display((float) 2, (float) 1, (float) 2, (float) 1, 9, loc, rec);
-							}
-						}
-					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		}, 0, 8);
@@ -277,8 +281,10 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			public void run() {
 				for (Projectile arrow : arrows) {
 					Location loc = arrow.getLocation();
-					for (Player online : Bukkit.getOnlinePlayers()) {
-						Particles.FLAME.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loc, online);
+					try {
+						ParticleEffect.FLAME.sendToPlayers(Bukkit.getOnlinePlayers(), loc, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}
@@ -294,48 +300,46 @@ public class CustomEffects extends JavaPlugin implements Listener {
 	public void circle() {
 		for (final Player online : Bukkit.getOnlinePlayers()) {
 			final Location loc = online.getLocation();
+			loc.setY(loc.getY() + 2.1);
 			Location loca = loc;
 			loca.setX(loca.getX() + 1);
-			loca.setY(loca.getY() + 2.1);
-			if (online.hasPermission("customeffects.circle.water")) {
-				for (Player rec : Bukkit.getOnlinePlayers()) {
-					Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
+			try {
+				if (online.hasPermission("customeffects.circle.water")) {
+					ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+				} else if (online.hasPermission("customeffects.circle.lava")) {
+					ParticleEffect.DRIP_LAVA.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
 				}
-			} else if (online.hasPermission("customeffects.circle.lava")) {
-				for (Player rec : Bukkit.getOnlinePlayers()) {
-					Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
-				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() + 0.7);
-					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() + 0.7);
-					if (online.hasPermission("customeffects.circle.water")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
+					try {
+						if (online.hasPermission("customeffects.circle.water")) {
+							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+						} else if (online.hasPermission("customeffects.circle.lava")) {
+							ParticleEffect.DRIP_LAVA.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
 						}
-					} else if (online.hasPermission("customeffects.circle.lava")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
-						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}, 3);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
 					Location loca = loc;
-					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() + 1);
-					if (online.hasPermission("customeffects.circle.water")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
+					try {
+						if (online.hasPermission("customeffects.circle.water")) {
+							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+						} else if (online.hasPermission("customeffects.circle.lava")) {
+							ParticleEffect.DRIP_LAVA.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
 						}
-					} else if (online.hasPermission("customeffects.circle.lava")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
-						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}, 6);
@@ -343,16 +347,15 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() - 0.7);
-					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() + 0.7);
-					if (online.hasPermission("customeffects.circle.water")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
+					try {
+						if (online.hasPermission("customeffects.circle.water")) {
+							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+						} else if (online.hasPermission("customeffects.circle.lava")) {
+							ParticleEffect.DRIP_LAVA.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
 						}
-					} else if (online.hasPermission("customeffects.circle.lava")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
-						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}, 9);
@@ -360,15 +363,14 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() - 1);
-					loca.setY(loca.getY() + 2.1);
-					if (online.hasPermission("customeffects.circle.water")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
+					try {
+						if (online.hasPermission("customeffects.circle.water")) {
+							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+						} else if (online.hasPermission("customeffects.circle.lava")) {
+							ParticleEffect.DRIP_LAVA.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
 						}
-					} else if (online.hasPermission("customeffects.circle.lava")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
-						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}, 12);
@@ -376,32 +378,30 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() - 0.7);
-					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() - 0.7);
-					if (online.hasPermission("customeffects.circle.water")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
+					try {
+						if (online.hasPermission("customeffects.circle.water")) {
+							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+						} else if (online.hasPermission("customeffects.circle.lava")) {
+							ParticleEffect.DRIP_LAVA.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
 						}
-					} else if (online.hasPermission("customeffects.circle.lava")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
-						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}, 15);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
 					Location loca = loc;
-					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() - 1);
-					if (online.hasPermission("customeffects.circle.water")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
+					try {
+						if (online.hasPermission("customeffects.circle.water")) {
+							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+						} else if (online.hasPermission("customeffects.circle.lava")) {
+							ParticleEffect.DRIP_LAVA.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
 						}
-					} else if (online.hasPermission("customeffects.circle.lava")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
-						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}, 18);
@@ -409,16 +409,15 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				public void run() {
 					Location loca = loc;
 					loca.setX(loca.getX() + 0.7);
-					loca.setY(loca.getY() + 2.1);
 					loca.setZ(loca.getZ() - 0.7);
-					if (online.hasPermission("customeffects.circle.water")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_WATER.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
+					try {
+						if (online.hasPermission("customeffects.circle.water")) {
+							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+						} else if (online.hasPermission("customeffects.circle.lava")) {
+							ParticleEffect.DRIP_LAVA.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
 						}
-					} else if (online.hasPermission("customeffects.circle.lava")) {
-						for (Player rec : Bukkit.getOnlinePlayers()) {
-							Particles.DRIP_LAVA.display((float) 0, (float) 0, (float) 0, (float) 0, 1, loca, rec);
-						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}, 21);

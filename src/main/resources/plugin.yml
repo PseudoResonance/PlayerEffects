@@ -1,7 +1,7 @@
 name: CustomEffects
 author: WolfLeader116
 main: io.github.wolfleader116.customeffects.CustomEffects
-version: 1.4.1
+version: 1.5
 description: CustomEffects plugin.
 depend: [WolfAPI]
 commands:
@@ -12,5 +12,9 @@ permissions:
     description: Gives the player access to all customeffects features.
     children:
       customeffects.use: true
+      customeffects.explosive: false
   customeffects.use:
     description: Allows the player to use the custom items.
+  customeffects.explosive:
+    description: Allows the player to make destructive explosions.
+    default: op

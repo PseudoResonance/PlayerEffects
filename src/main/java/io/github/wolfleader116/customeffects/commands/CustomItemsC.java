@@ -1,13 +1,16 @@
 package io.github.wolfleader116.customeffects.commands;
 
+import io.github.wolfleader116.customeffects.CustomEffects;
 import io.github.wolfleader116.wolfapi.Errors;
-import io.github.wolfleader116.wolfapi.Particles;
+import io.github.wolfleader116.wolfapi.ItemModifiers;
+import io.github.wolfleader116.wolfapi.ParticleEffect;
 import io.github.wolfleader116.wolfapi.WolfAPI;
 
 import java.util.Arrays;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -37,10 +40,9 @@ public class CustomItemsC implements CommandExecutor {
 							meta.setDisplayName("§c§lExplosive Bow");
 							meta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§c§lExplosive Bow"));
 							explosivebow.setItemMeta(meta);
+							explosivebow = ItemModifiers.setFinal(explosivebow);
 							p.getInventory().addItem(explosivebow);
-							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
-							}
+							createDoubleHelix(p.getLocation());
 							WolfAPI.message("Got explosive bow!", p, "CustomItems");
 						} else if (args[0].equalsIgnoreCase("Jetpack")) {
 							ItemStack jetpack = new ItemStack(Material.GOLD_CHESTPLATE, 1, Short.parseShort("0"));
@@ -49,6 +51,7 @@ public class CustomItemsC implements CommandExecutor {
 							meta.setDisplayName("§6§lJetpack");
 							meta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§6§lJetpack"));
 							jetpack.setItemMeta(meta);
+							jetpack = ItemModifiers.setFinal(jetpack);
 							if (p.getInventory().getChestplate() != null) {
 								ItemStack originalchest = p.getInventory().getChestplate();
 								p.getInventory().addItem(originalchest);
@@ -56,9 +59,7 @@ public class CustomItemsC implements CommandExecutor {
 							} else {
 								p.getInventory().setChestplate(jetpack);
 							}
-							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
-							}
+							createDoubleHelix(p.getLocation());
 							WolfAPI.message("Got jetpack!", p, "CustomItems");
 						} else if (args[0].equalsIgnoreCase("JetpackControl")) {
 							ItemStack jetpackcontrol = new ItemStack(Material.STICK, 1, Short.parseShort("0"));
@@ -67,10 +68,9 @@ public class CustomItemsC implements CommandExecutor {
 							meta.setDisplayName("§6§lJetpack Control Stick");
 							meta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§6§lJetpack Control Stick"));
 							jetpackcontrol.setItemMeta(meta);
+							jetpackcontrol = ItemModifiers.setFinal(jetpackcontrol);
 							p.getInventory().addItem(jetpackcontrol);
-							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
-							}
+							createDoubleHelix(p.getLocation());
 							WolfAPI.message("Got jetpack control stick!", p, "CustomItems");
 						} else if (args[0].equalsIgnoreCase("JetpackSet")) {
 							ItemStack jetpackcontrol = new ItemStack(Material.STICK, 1, Short.parseShort("0"));
@@ -79,16 +79,16 @@ public class CustomItemsC implements CommandExecutor {
 							controlmeta.setDisplayName("§6§lJetpack Control Stick");
 							controlmeta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§6§lJetpack Control Stick"));
 							jetpackcontrol.setItemMeta(controlmeta);
+							jetpackcontrol = ItemModifiers.setFinal(jetpackcontrol);
 							p.getInventory().addItem(jetpackcontrol);
-							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
-							}
+							createDoubleHelix(p.getLocation());
 							ItemStack jetpack = new ItemStack(Material.GOLD_CHESTPLATE, 1, Short.parseShort("0"));
 							jetpack.addUnsafeEnchantment(Enchantment.DURABILITY, 32767);
 							ItemMeta jetpackmeta = jetpack.getItemMeta();
 							jetpackmeta.setDisplayName("§6§lJetpack");
 							jetpackmeta.setLore(Arrays.asList("§6" + p.getName() + "§b's", "§6§lJetpack"));
 							jetpack.setItemMeta(jetpackmeta);
+							jetpack = ItemModifiers.setFinal(jetpack);
 							if (p.getInventory().getChestplate() != null) {
 								ItemStack originalchest = p.getInventory().getChestplate();
 								p.getInventory().addItem(originalchest);
@@ -96,9 +96,7 @@ public class CustomItemsC implements CommandExecutor {
 							} else {
 								p.getInventory().setChestplate(jetpack);
 							}
-							for (Player online : Bukkit.getOnlinePlayers()) {
-								Particles.LAVA.display((float) 1, (float) 1, (float) 1, (float) 1, 10, p.getLocation(), online);
-							}
+							createDoubleHelix(p.getLocation());
 							WolfAPI.message("Got jetpack set!", p, "CustomItems");
 						}
 					} else {
@@ -110,6 +108,48 @@ public class CustomItemsC implements CommandExecutor {
 			}
 		}
 		return false;
+	}
+	
+	public void createDoubleHelix(Location loc) {
+		int radius = 2;
+		long d = -1;
+		for (double y = 0; y <= 50; y+=0.05) {
+			d++;
+			if (y >= 4) {
+				break;
+			}
+			double x = radius * Math.cos(y);
+			double z = radius * Math.sin(y);
+			final Location loca = new Location(loc.getWorld(), loc.getX() + x, loc.getY() + y, loc.getZ() + z);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(CustomEffects.plugin, new Runnable() {
+				public void run() {
+					try {
+						ParticleEffect.FLAME.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}, d);
+			long da = -1;
+			for (double ya = 0; ya <= 50; ya+=0.05) {
+				da++;
+				if (ya >= 4) {
+					break;
+				}
+				double xa = radius * Math.cos(ya) * -1;
+				double za = radius * Math.sin(ya) * -1;
+				final Location locaa = new Location(loc.getWorld(), loc.getX() + xa, loc.getY() + ya, loc.getZ() + za);
+				Bukkit.getScheduler().scheduleSyncDelayedTask(CustomEffects.plugin, new Runnable() {
+					public void run() {
+						try {
+							ParticleEffect.FLAME.sendToPlayers(Bukkit.getOnlinePlayers(), locaa, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}, da);
+			}
+		}
 	}
 
 }
