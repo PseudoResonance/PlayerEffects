@@ -300,9 +300,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 	public void circle() {
 		for (final Player online : Bukkit.getOnlinePlayers()) {
 			final Location loc = online.getLocation();
-			loc.setY(loc.getY() + 2.1);
-			Location loca = loc;
-			loca.setX(loca.getX() + 1);
+			Location loca = new Location(loc.getWorld(), loc.getX() + 1, loc.getY() + 2.1, loc.getZ());
 			try {
 				if (online.hasPermission("customeffects.circle.water")) {
 					ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
@@ -314,9 +312,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			}
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
-					Location loca = loc;
-					loca.setX(loca.getX() + 0.7);
-					loca.setZ(loca.getZ() + 0.7);
+					Location loca = new Location(loc.getWorld(), loc.getX() + 0.7, loc.getY() + 2.1, loc.getZ() + 0.7);
 					try {
 						if (online.hasPermission("customeffects.circle.water")) {
 							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
@@ -330,8 +326,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			}, 3);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
-					Location loca = loc;
-					loca.setZ(loca.getZ() + 1);
+					Location loca = new Location(loc.getWorld(), loc.getX(), loc.getY() + 2.1, loc.getZ() + 1);
 					try {
 						if (online.hasPermission("customeffects.circle.water")) {
 							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
@@ -345,9 +340,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			}, 6);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
-					Location loca = loc;
-					loca.setX(loca.getX() - 0.7);
-					loca.setZ(loca.getZ() + 0.7);
+					Location loca = new Location(loc.getWorld(), loc.getX() - 0.7, loc.getY() + 2.1, loc.getZ() + 0.7);
 					try {
 						if (online.hasPermission("customeffects.circle.water")) {
 							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
@@ -361,8 +354,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			}, 9);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
-					Location loca = loc;
-					loca.setX(loca.getX() - 1);
+					Location loca = new Location(loc.getWorld(), loc.getX() - 1, loc.getY() + 2.1, loc.getZ());
 					try {
 						if (online.hasPermission("customeffects.circle.water")) {
 							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
@@ -376,9 +368,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			}, 12);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
-					Location loca = loc;
-					loca.setX(loca.getX() - 0.7);
-					loca.setZ(loca.getZ() - 0.7);
+					Location loca = new Location(loc.getWorld(), loc.getX() - 0.7, loc.getY() + 2.1, loc.getZ() - 0.7);
 					try {
 						if (online.hasPermission("customeffects.circle.water")) {
 							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
@@ -392,8 +382,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			}, 15);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
-					Location loca = loc;
-					loca.setZ(loca.getZ() - 1);
+					Location loca = new Location(loc.getWorld(), loc.getX(), loc.getY() + 2.1, loc.getZ() - 1);
 					try {
 						if (online.hasPermission("customeffects.circle.water")) {
 							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
@@ -407,9 +396,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			}, 18);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 				public void run() {
-					Location loca = loc;
-					loca.setX(loca.getX() + 0.7);
-					loca.setZ(loca.getZ() - 0.7);
+					Location loca = new Location(loc.getWorld(), loc.getX() + 0.7, loc.getY() + 2.1, loc.getZ() - 0.7);
 					try {
 						if (online.hasPermission("customeffects.circle.water")) {
 							ParticleEffect.DRIP_WATER.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
