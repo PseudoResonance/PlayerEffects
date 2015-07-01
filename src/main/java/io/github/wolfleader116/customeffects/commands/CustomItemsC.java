@@ -112,9 +112,9 @@ public class CustomItemsC implements CommandExecutor {
 	
 	public void createDoubleHelix(Location loc) {
 		int radius = 1;
-		long d = (long) -0.1;
+		long da = (long) -0.5;
 		for (double y = 0; y <= 50; y+=0.05) {
-			d = (long) (d + 0.1);
+			da = (long) (da + 0.5);
 			if (y >= 6) {
 				break;
 			}
@@ -129,26 +129,26 @@ public class CustomItemsC implements CommandExecutor {
 						e.printStackTrace();
 					}
 				}
-			}, d);
-			long da = (long) -0.1;
-			for (double ya = 0; ya <= 50; ya+=0.05) {
-				da = (long) (da + 0.1);
-				if (ya >= 6) {
-					break;
-				}
-				double xa = radius * Math.cos(ya) * -1;
-				double za = radius * Math.sin(ya) * -1;
-				final Location locaa = new Location(loc.getWorld(), loc.getX() + xa, loc.getY() + ya, loc.getZ() + za);
-				Bukkit.getScheduler().scheduleSyncDelayedTask(CustomEffects.plugin, new Runnable() {
-					public void run() {
-						try {
-							ParticleEffect.FLAME.sendToPlayers(Bukkit.getOnlinePlayers(), locaa, (float) 0, (float) 0, (float) 0, (float) 0, 1);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				}, da);
+			}, da);
+		}
+		long db = (long) -0.5;
+		for (double y = 0; y <= 50; y+=0.05) {
+			db = (long) (db + 0.5);
+			if (y >= 6) {
+				break;
 			}
+			double x = radius * Math.cos(y) * -1;
+			double z = radius * Math.sin(y) * -1;
+			final Location loca = new Location(loc.getWorld(), loc.getX() + x, loc.getY() + y, loc.getZ() + z);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(CustomEffects.plugin, new Runnable() {
+				public void run() {
+					try {
+						ParticleEffect.FLAME.sendToPlayers(Bukkit.getOnlinePlayers(), loca, (float) 0, (float) 0, (float) 0, (float) 0, 1);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}, db);
 		}
 	}
 

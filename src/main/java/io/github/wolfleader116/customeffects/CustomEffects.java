@@ -9,6 +9,7 @@ import io.github.wolfleader116.wolfapi.Errors;
 import io.github.wolfleader116.wolfapi.ParticleEffect;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
@@ -451,7 +452,9 @@ public class CustomEffects extends JavaPlugin implements Listener {
 												Vector direction = e.getPlayer().getLocation().getDirection();
 												direction.multiply(1.5);
 												e.getPlayer().setVelocity(new Vector(direction.getX(), direction.getY(), direction.getZ()));
-												dur = dur + 1;
+												if (e.getPlayer().getGameMode() == GameMode.ADVENTURE || e.getPlayer().getGameMode() == GameMode.SURVIVAL) {
+													dur = dur + 1;
+												}
 												jetpack.setDurability((short) dur);
 												e.getPlayer().getInventory().setChestplate(jetpack);
 											}
