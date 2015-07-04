@@ -3,6 +3,7 @@ package io.github.wolfleader116.customeffects;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import io.github.wolfleader116.customeffects.commands.CustomItemsC;
@@ -36,7 +37,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 
 	public ArrayList<Projectile> arrows = new ArrayList<Projectile>();
 	
-	public HashMap<Projectile, String> arrowdata = new HashMap<Projectile, String>();
+	public HashMap<UUID, String> arrowdata = new HashMap<UUID, String>();
 
 	public static CustomEffects plugin;
 
@@ -433,21 +434,19 @@ public class CustomEffects extends JavaPlugin implements Listener {
 									power = lore.get(3);
 								} else {
 									power = "3";
-									Bukkit.broadcastMessage("Power is not number");
+									Bukkit.broadcastMessage("Power is " + lore.get(3));
 								}
 							} else {
 								power = "3";
-								Bukkit.broadcastMessage("Failed to get power");
 							}
 							if (lore.get(5) != null) {
 								if (lore.get(5).equalsIgnoreCase("true") || lore.get(5).equalsIgnoreCase("false")) {
 									fire = lore.get(5).toLowerCase();
 								} else {
 									fire = "false";
-									Bukkit.broadcastMessage("Fire is not true/false");
+									Bukkit.broadcastMessage("Fire is " + lore.get(5));
 								}
 							} else {
-								Bukkit.broadcastMessage("Failed to get fire");
 								fire = "false";
 							}
 							if (lore.get(7) != null) {
@@ -455,14 +454,13 @@ public class CustomEffects extends JavaPlugin implements Listener {
 									damage = lore.get(7).toLowerCase();
 								} else {
 									damage = "false";
-									Bukkit.broadcastMessage("Fire is not true/false");
+									Bukkit.broadcastMessage("Damage is " + lore.get(7));
 								}
 							} else {
-								Bukkit.broadcastMessage("Failed to get damage");
 								damage = "false";
 							}
 							Projectile shootarrow = e.getPlayer().launchProjectile(Arrow.class);
-							arrowdata.put(shootarrow, power + ":" + fire + ":" + damage);
+							arrowdata.put(shootarrow.getUniqueId(), power + ":" + fire + ":" + damage);
 							Bukkit.broadcastMessage(power + ":" + fire + ":" + damage);
 							arrows.add(shootarrow);
 							e.setCancelled(true);
@@ -524,8 +522,8 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			if (arrow.getShooter() instanceof Player) {
 				Player shooter = (Player) arrow.getShooter();
 				if (shooter.hasPermission("customeffects.use")) {
-					if (arrowdata.containsValue(arrow)) {
-						String data = arrowdata.get(arrow);
+					if (arrowdata.containsValue(arrow.getUniqueId())) {
+						String data = arrowdata.get(arrow.getUniqueId());
 						String[] datas = data.split(":");
 						Location loc = arrow.getLocation();
 						Bukkit.broadcastMessage("CustomEffects Debug: X: " + loc.getX() + " Y: " + loc.getY() + " Z: " + loc.getZ() + " Power: " + Integer.valueOf(datas[0] + " Creates Fire: " + Boolean.valueOf(datas[1]) + " Damages Blocks: " + Boolean.valueOf(datas[2])));
