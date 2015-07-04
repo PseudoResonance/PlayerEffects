@@ -27,7 +27,6 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
@@ -434,17 +433,21 @@ public class CustomEffects extends JavaPlugin implements Listener {
 									power = lore.get(3);
 								} else {
 									power = "3";
+									Bukkit.broadcastMessage("Power is not number");
 								}
 							} else {
 								power = "3";
+								Bukkit.broadcastMessage("Failed to get power");
 							}
 							if (lore.get(5) != null) {
 								if (lore.get(5).equalsIgnoreCase("true") || lore.get(5).equalsIgnoreCase("false")) {
 									fire = lore.get(5).toLowerCase();
 								} else {
 									fire = "false";
+									Bukkit.broadcastMessage("Fire is not true/false");
 								}
 							} else {
+								Bukkit.broadcastMessage("Failed to get fire");
 								fire = "false";
 							}
 							if (lore.get(7) != null) {
@@ -452,15 +455,15 @@ public class CustomEffects extends JavaPlugin implements Listener {
 									damage = lore.get(7).toLowerCase();
 								} else {
 									damage = "false";
+									Bukkit.broadcastMessage("Fire is not true/false");
 								}
 							} else {
+								Bukkit.broadcastMessage("Failed to get damage");
 								damage = "false";
 							}
 							Projectile shootarrow = e.getPlayer().launchProjectile(Arrow.class);
 							arrowdata.put(shootarrow, power + ":" + fire + ":" + damage);
-							shootarrow.setMetadata(power, new FixedMetadataValue(this, true));
-							shootarrow.setMetadata("f" + fire, new FixedMetadataValue(this, true));
-							shootarrow.setMetadata("d" + damage, new FixedMetadataValue(this, true));
+							Bukkit.broadcastMessage(power + ":" + fire + ":" + damage);
 							arrows.add(shootarrow);
 							e.setCancelled(true);
 						} else {
@@ -525,6 +528,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 						String data = arrowdata.get(arrow);
 						String[] datas = data.split(":");
 						Location loc = arrow.getLocation();
+						Bukkit.broadcastMessage("CustomEffects Debug: X: " + loc.getX() + " Y: " + loc.getY() + " Z: " + loc.getZ() + " Power: " + Integer.valueOf(datas[0] + " Creates Fire: " + Boolean.valueOf(datas[1]) + " Damages Blocks: " + Boolean.valueOf(datas[2])));
 						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), Integer.valueOf(datas[0]), Boolean.valueOf(datas[1]), Boolean.valueOf(datas[2]));
 						if (arrow.isValid()) {
 							arrow.remove();
@@ -550,6 +554,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 						String data = arrowdata.get(arrow);
 						String[] datas = data.split(":");
 						Location loc = arrow.getLocation();
+						Bukkit.broadcastMessage("CustomEffects Debug: X: " + loc.getX() + " Y: " + loc.getY() + " Z: " + loc.getZ() + " Power: " + Integer.valueOf(datas[0] + " Creates Fire: " + Boolean.valueOf(datas[1]) + " Damages Blocks: " + Boolean.valueOf(datas[2])));
 						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), Integer.valueOf(datas[0]), Boolean.valueOf(datas[1]), Boolean.valueOf(datas[2]));
 						if (arrow.isValid()) {
 							arrow.remove();

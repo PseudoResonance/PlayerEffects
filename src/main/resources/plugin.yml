@@ -1,7 +1,7 @@
 name: CustomEffects
 author: WolfLeader116
 main: io.github.wolfleader116.customeffects.CustomEffects
-version: 1.6
+version: 1.6.1
 description: CustomEffects plugin.
 depend: [WolfAPI]
 commands:
