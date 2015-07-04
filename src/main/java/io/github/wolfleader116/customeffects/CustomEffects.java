@@ -1,6 +1,8 @@
 package io.github.wolfleader116.customeffects;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
 import io.github.wolfleader116.customeffects.commands.CustomItemsC;
@@ -8,6 +10,7 @@ import io.github.wolfleader116.customeffects.tabcompleters.CustomItemsTC;
 import io.github.wolfleader116.wolfapi.Errors;
 import io.github.wolfleader116.wolfapi.ParticleEffect;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -33,6 +36,8 @@ public class CustomEffects extends JavaPlugin implements Listener {
 	private static final Logger log = Logger.getLogger("Minecraft");
 
 	public ArrayList<Projectile> arrows = new ArrayList<Projectile>();
+	
+	public HashMap<Projectile, String> arrowdata = new HashMap<Projectile, String>();
 
 	public static CustomEffects plugin;
 
@@ -420,17 +425,44 @@ public class CustomEffects extends JavaPlugin implements Listener {
 				if (meta.hasDisplayName()) {
 					if (meta.getDisplayName().contains("§c§lExplosive Bow")) {
 						if (e.getPlayer().hasPermission("customeffects.use")) {
-							if (e.getPlayer().hasPermission("customeffects.explosive")) {
-								Projectile shootarrow = e.getPlayer().launchProjectile(Arrow.class);
-								shootarrow.setMetadata("Explosive1", new FixedMetadataValue(this, true));
-								arrows.add(shootarrow);
-								e.setCancelled(true);
+							String power = "";
+							String fire = "";
+							String damage = "";
+							List<String> lore = meta.getLore();
+							if (lore.get(3) != null) {
+								if (NumberUtils.isNumber(lore.get(3))) {
+									power = lore.get(3);
+								} else {
+									power = "3";
+								}
 							} else {
-								Projectile shootarrow = e.getPlayer().launchProjectile(Arrow.class);
-								shootarrow.setMetadata("Explosive", new FixedMetadataValue(this, true));
-								arrows.add(shootarrow);
-								e.setCancelled(true);
+								power = "3";
 							}
+							if (lore.get(5) != null) {
+								if (lore.get(5).equalsIgnoreCase("true") || lore.get(5).equalsIgnoreCase("false")) {
+									fire = lore.get(5).toLowerCase();
+								} else {
+									fire = "false";
+								}
+							} else {
+								fire = "false";
+							}
+							if (lore.get(7) != null) {
+								if (lore.get(7).equalsIgnoreCase("true") || lore.get(5).equalsIgnoreCase("false")) {
+									damage = lore.get(7).toLowerCase();
+								} else {
+									damage = "false";
+								}
+							} else {
+								damage = "false";
+							}
+							Projectile shootarrow = e.getPlayer().launchProjectile(Arrow.class);
+							arrowdata.put(shootarrow, power + ":" + fire + ":" + damage);
+							shootarrow.setMetadata(power, new FixedMetadataValue(this, true));
+							shootarrow.setMetadata("f" + fire, new FixedMetadataValue(this, true));
+							shootarrow.setMetadata("d" + damage, new FixedMetadataValue(this, true));
+							arrows.add(shootarrow);
+							e.setCancelled(true);
 						} else {
 							Errors.sendError(Errors.NO_PERMISSION, e.getPlayer(), "CustomEffects");
 						}
@@ -449,8 +481,19 @@ public class CustomEffects extends JavaPlugin implements Listener {
 										if (jetpackmeta.getDisplayName().contains("§6§lJetpack")) {
 											int dur = jetpack.getDurability();
 											if (dur < 112) {
+												Double power;
+												List<String> lore = meta.getLore();
+												if (lore.get(3) != null) {
+													if (NumberUtils.isNumber(lore.get(3))) {
+														power = Double.valueOf(lore.get(3));
+													} else {
+														power = 1.5;
+													}
+												} else {
+													power = 1.5;
+												}
 												Vector direction = e.getPlayer().getLocation().getDirection();
-												direction.multiply(1.5);
+												direction.multiply(power);
 												e.getPlayer().setVelocity(new Vector(direction.getX(), direction.getY(), direction.getZ()));
 												if (e.getPlayer().getGameMode() == GameMode.ADVENTURE || e.getPlayer().getGameMode() == GameMode.SURVIVAL) {
 													dur = dur + 1;
@@ -478,21 +521,15 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			if (arrow.getShooter() instanceof Player) {
 				Player shooter = (Player) arrow.getShooter();
 				if (shooter.hasPermission("customeffects.use")) {
-					if (arrow.hasMetadata("Explosive")) {
+					if (arrowdata.containsValue(arrow)) {
+						String data = arrowdata.get(arrow);
+						String[] datas = data.split(":");
 						Location loc = arrow.getLocation();
-						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), 3.0F, false, false);
-						if (arrow.getWorld() != null) {
+						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), Integer.valueOf(datas[0]), Boolean.valueOf(datas[1]), Boolean.valueOf(datas[2]));
+						if (arrow.isValid()) {
 							arrow.remove();
 							arrows.remove(arrow);
-						} else {
-							arrows.remove(arrow);
-						}
-					} else if (arrow.hasMetadata("Explosive1")) {
-						Location loc = arrow.getLocation();
-						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), 6.0F, true, true);
-						if (arrow.getWorld() != null) {
-							arrow.remove();
-							arrows.remove(arrow);
+							arrowdata.remove(arrow);
 						} else {
 							arrows.remove(arrow);
 						}
@@ -509,21 +546,15 @@ public class CustomEffects extends JavaPlugin implements Listener {
 			if (arrow.getShooter() instanceof Player) {
 				Player shooter = (Player) arrow.getShooter();
 				if (shooter.hasPermission("customeffects.use")) {
-					if (arrow.hasMetadata("Explosive")) {
+					if (arrowdata.containsValue(arrow)) {
+						String data = arrowdata.get(arrow);
+						String[] datas = data.split(":");
 						Location loc = arrow.getLocation();
-						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), 3.0F, false, false);
-						if (arrow.getWorld() != null) {
+						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), Integer.valueOf(datas[0]), Boolean.valueOf(datas[1]), Boolean.valueOf(datas[2]));
+						if (arrow.isValid()) {
 							arrow.remove();
 							arrows.remove(arrow);
-						} else {
-							arrows.remove(arrow);
-						}
-					} else if (arrow.hasMetadata("Explosive1")) {
-						Location loc = arrow.getLocation();
-						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), 6.0F, true, true);
-						if (arrow.getWorld() != null) {
-							arrow.remove();
-							arrows.remove(arrow);
+							arrowdata.remove(arrow);
 						} else {
 							arrows.remove(arrow);
 						}
