@@ -459,6 +459,9 @@ public class CustomEffects extends JavaPlugin implements Listener {
 							} else {
 								damage = "false";
 							}
+							for (String slore : lore) {
+								Bukkit.broadcastMessage(slore);
+							}
 							Projectile shootarrow = e.getPlayer().launchProjectile(Arrow.class);
 							arrowdata.put(shootarrow.getUniqueId(), power + ":" + fire + ":" + damage);
 							Bukkit.broadcastMessage(power + ":" + fire + ":" + damage);
