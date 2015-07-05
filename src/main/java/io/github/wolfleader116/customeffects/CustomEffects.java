@@ -10,6 +10,7 @@ import io.github.wolfleader116.customeffects.commands.CustomItemsC;
 import io.github.wolfleader116.customeffects.tabcompleters.CustomItemsTC;
 import io.github.wolfleader116.wolfapi.Errors;
 import io.github.wolfleader116.wolfapi.ParticleEffect;
+import net.md_5.bungee.api.ChatColor;
 
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Bukkit;
@@ -430,41 +431,34 @@ public class CustomEffects extends JavaPlugin implements Listener {
 							String damage = "";
 							List<String> lore = meta.getLore();
 							if (lore.get(3) != null) {
-								if (NumberUtils.isNumber(lore.get(3))) {
-									power = lore.get(3);
+								if (NumberUtils.isNumber(ChatColor.stripColor(lore.get(3)))) {
+									power = ChatColor.stripColor(lore.get(3));
 								} else {
 									power = "3";
-									Bukkit.broadcastMessage("Power is " + lore.get(3));
 								}
 							} else {
 								power = "3";
 							}
 							if (lore.get(5) != null) {
-								if (lore.get(5).equalsIgnoreCase("true") || lore.get(5).equalsIgnoreCase("false")) {
-									fire = lore.get(5).toLowerCase();
+								if (ChatColor.stripColor(lore.get(5)).equalsIgnoreCase("true") || ChatColor.stripColor(lore.get(5)).equalsIgnoreCase("false")) {
+									fire = ChatColor.stripColor(lore.get(5)).toLowerCase();
 								} else {
 									fire = "false";
-									Bukkit.broadcastMessage("Fire is " + lore.get(5));
 								}
 							} else {
 								fire = "false";
 							}
-							if (lore.get(7) != null) {
-								if (lore.get(7).equalsIgnoreCase("true") || lore.get(5).equalsIgnoreCase("false")) {
-									damage = lore.get(7).toLowerCase();
+							if (ChatColor.stripColor(lore.get(7)) != null) {
+								if (ChatColor.stripColor(lore.get(7)).equalsIgnoreCase("true") || ChatColor.stripColor(lore.get(7)).equalsIgnoreCase("false")) {
+									damage = ChatColor.stripColor(lore.get(7)).toLowerCase();
 								} else {
 									damage = "false";
-									Bukkit.broadcastMessage("Damage is " + lore.get(7));
 								}
 							} else {
 								damage = "false";
 							}
-							for (String slore : lore) {
-								Bukkit.broadcastMessage(slore);
-							}
 							Projectile shootarrow = e.getPlayer().launchProjectile(Arrow.class);
 							arrowdata.put(shootarrow.getUniqueId(), power + ":" + fire + ":" + damage);
-							Bukkit.broadcastMessage(power + ":" + fire + ":" + damage);
 							arrows.add(shootarrow);
 							e.setCancelled(true);
 						} else {
@@ -529,7 +523,6 @@ public class CustomEffects extends JavaPlugin implements Listener {
 						String data = arrowdata.get(arrow.getUniqueId());
 						String[] datas = data.split(":");
 						Location loc = arrow.getLocation();
-						Bukkit.broadcastMessage("CustomEffects Debug: X: " + loc.getX() + " Y: " + loc.getY() + " Z: " + loc.getZ() + " Power: " + Integer.valueOf(datas[0] + " Creates Fire: " + Boolean.valueOf(datas[1]) + " Damages Blocks: " + Boolean.valueOf(datas[2])));
 						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), Integer.valueOf(datas[0]), Boolean.valueOf(datas[1]), Boolean.valueOf(datas[2]));
 						if (arrow.isValid()) {
 							arrow.remove();
@@ -555,8 +548,7 @@ public class CustomEffects extends JavaPlugin implements Listener {
 						String data = arrowdata.get(arrow);
 						String[] datas = data.split(":");
 						Location loc = arrow.getLocation();
-						Bukkit.broadcastMessage("CustomEffects Debug: X: " + loc.getX() + " Y: " + loc.getY() + " Z: " + loc.getZ() + " Power: " + Integer.valueOf(datas[0] + " Creates Fire: " + Boolean.valueOf(datas[1]) + " Damages Blocks: " + Boolean.valueOf(datas[2])));
-						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), Integer.valueOf(datas[0]), Boolean.valueOf(datas[1]), Boolean.valueOf(datas[2]));
+						arrow.getWorld().createExplosion(loc.getX(), loc.getY(), loc.getZ(), Float.valueOf(datas[0]), Boolean.valueOf(datas[1]), Boolean.valueOf(datas[2]));
 						if (arrow.isValid()) {
 							arrow.remove();
 							arrows.remove(arrow);

@@ -219,10 +219,10 @@ public class CustomItemsC implements CommandExecutor {
 	
 	public void createDoubleHelix(Location loc) {
 		int radius = 1;
-		long da = (long) -0.5;
-		for (double y = 0; y <= 50; y+=0.05) {
-			da = (long) (da + 0.5);
-			if (y >= 6) {
+		long da = (long) -1;
+		for (double y = 0; y <= 50; y+=0.5) {
+			da = (long) (da + 1);
+			if (y >= 7) {
 				break;
 			}
 			double x = radius * Math.cos(y);
@@ -238,10 +238,10 @@ public class CustomItemsC implements CommandExecutor {
 				}
 			}, da);
 		}
-		long db = (long) -0.5;
-		for (double y = 0; y <= 50; y+=0.05) {
-			db = (long) (db + 0.5);
-			if (y >= 6) {
+		long db = (long) -1;
+		for (double y = 0; y <= 50; y+=0.5) {
+			db = (long) (db + 1);
+			if (y >= 7) {
 				break;
 			}
 			double x = radius * Math.cos(y) * -1;
