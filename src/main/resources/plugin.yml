@@ -1,12 +1,12 @@
-name: CustomEffects
+name: PlayerEffects
 author: WolfLeader116
-main: io.github.wolfleader116.customeffects.CustomEffects
-version: 1.6.4
-description: CustomEffects plugin.
+main: io.github.wolfleader116.playereffects.PlayerEffects
+version: 1.0
+description: PlayerEffects plugin.
 depend: [WolfAPI]
 commands:
-  customitems:
-    description: Lets the player get custom items.
+  playereffects:
+    description: Main PlayerEffects command.
 permissions:
   customeffects.*:
     description: Gives the player access to all customeffects features.

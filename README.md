@@ -1,2 +1,2 @@
-# CustomEffects
-CustomEffects Plugin
+# PlayerEffects
+PlayerEffects Plugin
