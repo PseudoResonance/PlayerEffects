@@ -29,6 +29,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
+		this.saveDefaultConfig();
 		if (Bukkit.getServer().getPluginManager().getPlugin("WolfAPI") == null) {
 			log.severe("WolfAPI was not found on the server! Disabling PlayerEffects!");
 			Bukkit.getServer().getPluginManager().disablePlugin(this);
