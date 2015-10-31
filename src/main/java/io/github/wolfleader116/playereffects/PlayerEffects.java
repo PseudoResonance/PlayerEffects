@@ -40,7 +40,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 		getCommand("playereffects").setTabCompleter(new PlayerEffectsTC());
 		Set<String> effects = this.getConfig().getConfigurationSection("Effects").getKeys(false);
 		for (final String effect : effects) {
-			if (effect.endsWith("helix")) {
+			if (effect.endsWith("doublehelix")) {
 				List<String> players = PlayerEffects.plugin.getConfig().getStringList("Effects." + effect);
 				if (!(players.isEmpty())) {
 					Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
@@ -49,15 +49,14 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 							if (!(players.isEmpty())) {
 								for (String player : players) {
 									if (Bukkit.getServer().getPlayer(player) != null) {
-										log.info("EFFECT IS " + effect.replace("helix", ""));
-										createHelix(Bukkit.getServer().getPlayer(player).getLocation(), ParticleEffect.valueOf(effect.replace("helix", "")));
+										createDoubleHelix(Bukkit.getServer().getPlayer(player).getLocation(), ParticleEffect.valueOf(effect.replace("doublehelix", "")));
 									}
 								}
 							}
 						}
 					}, 0, 30);
 				}
-			} else if (effect.endsWith("doublehelix")) {
+			} else if (effect.endsWith("helix")) {
 				List<String> players = PlayerEffects.plugin.getConfig().getStringList("Effects." + effect);
 				if (!(players.isEmpty())) {
 					Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
@@ -66,8 +65,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 							if (!(players.isEmpty())) {
 								for (String player : players) {
 									if (Bukkit.getServer().getPlayer(player) != null) {
-										log.info("EFFECT IS " + effect.replace("doublehelix", ""));
-										createDoubleHelix(Bukkit.getServer().getPlayer(player).getLocation(), ParticleEffect.valueOf(effect.replace("doublehelix", "")));
+										createHelix(Bukkit.getServer().getPlayer(player).getLocation(), ParticleEffect.valueOf(effect.replace("helix", "")));
 									}
 								}
 							}
