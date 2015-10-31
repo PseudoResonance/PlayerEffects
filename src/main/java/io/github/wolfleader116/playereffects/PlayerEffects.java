@@ -85,7 +85,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 		int radius = 1;
 		long da = (long) -1;
 		for (double y = 0; y <= 4; y+=0.5) {
-			da = (long) (da + 2);
+			da = (long) (da + 5);
 			if (y > 4) {
 				break;
 			}
@@ -108,7 +108,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 		int radius = 1;
 		long da = (long) -1;
 		for (double y = 0; y <= 4; y+=0.5) {
-			da = (long) (da + 2);
+			da = (long) (da + 5);
 			if (y > 4) {
 				break;
 			}
