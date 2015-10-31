@@ -1,11 +1,11 @@
 package io.github.wolfleader116.playereffects;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
 import io.github.wolfleader116.playereffects.commands.PlayerEffectsC;
@@ -32,6 +32,13 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 	public void onEnable() {
 		plugin = this;
 		this.saveDefaultConfig();
+		if (this.getConfig().getInt("Version") != 2) {
+			File conf = new File(this.getDataFolder(), "config.yml");
+			conf.delete();
+			this.saveDefaultConfig();
+			this.saveConfig();
+			this.reloadConfig();
+		}
 		if (Bukkit.getServer().getPluginManager().getPlugin("WolfAPI") == null) {
 			log.severe("WolfAPI was not found on the server! Disabling PlayerEffects!");
 			Bukkit.getServer().getPluginManager().disablePlugin(this);
@@ -90,10 +97,8 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 			if (y > 4) {
 				break;
 			}
-			int number = ThreadLocalRandom.current().nextInt(0, 1 + 1);
-			double result = number / 10;
-			double x = radius * Math.cos(y) * result;
-			double z = radius * Math.sin(y) * result;
+			double x = radius * Math.cos(y);
+			double z = radius * Math.sin(y);
 			final Location loca = new Location(loc.getWorld(), loc.getX() + x, loc.getY() + y, loc.getZ() + z);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(PlayerEffects.plugin, new Runnable() {
 				public void run() {
@@ -115,10 +120,8 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 			if (y > 2.5) {
 				break;
 			}
-			int number = ThreadLocalRandom.current().nextInt(0, 1 + 1);
-			double result = number / 10;
-			double x = radius * Math.cos(y) * result;
-			double z = radius * Math.sin(y) * result;
+			double x = radius * Math.cos(y);
+			double z = radius * Math.sin(y);
 			final Location loca = new Location(loc.getWorld(), loc.getX() + x, loc.getY() + y, loc.getZ() + z);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(PlayerEffects.plugin, new Runnable() {
 				public void run() {
@@ -136,10 +139,8 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 			if (y > 2.5) {
 				break;
 			}
-			int number = ThreadLocalRandom.current().nextInt(0, 1 + 1);
-			double result = number / 10;
-			double x = radius * Math.cos(y) * -1 * result;
-			double z = radius * Math.sin(y) * -1 * result;
+			double x = radius * Math.cos(y) * -1;
+			double z = radius * Math.sin(y) * -1;
 			final Location loca = new Location(loc.getWorld(), loc.getX() + x, loc.getY() + y, loc.getZ() + z);
 			Bukkit.getScheduler().scheduleSyncDelayedTask(PlayerEffects.plugin, new Runnable() {
 				public void run() {

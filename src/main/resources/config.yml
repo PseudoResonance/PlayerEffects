@@ -3,8 +3,8 @@
 ######################
 
 #DO NOT EDIT THIS LINE OR YOUR CONFIG WILL BE RESET!
-Version: 1
+Version: 2
 
 Effects:
-  flamedoublehelix:
+  enchantment_tabledoublehelix:
     - WolfLeader116
