@@ -29,6 +29,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 
 	@Override
 	public void onEnable() {
+		plugin = this;
 		this.saveDefaultConfig();
 		if (Bukkit.getServer().getPluginManager().getPlugin("WolfAPI") == null) {
 			log.severe("WolfAPI was not found on the server! Disabling PlayerEffects!");
@@ -73,6 +74,11 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void onDisable() {
+		plugin = null;
 	}
 	
 	public void createHelix(Location loc, final ParticleEffect effect) {
@@ -138,10 +144,5 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 				}
 			}, db);
 		}
-	}
-
-	@Override
-	public void onDisable() {
-		plugin = null;
 	}
 }
