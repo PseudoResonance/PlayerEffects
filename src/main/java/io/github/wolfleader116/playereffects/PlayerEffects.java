@@ -54,7 +54,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 								}
 							}
 						}
-					}, 0, 10);
+					}, 0, 40);
 				}
 			} else if (effect.endsWith("helix")) {
 				List<String> players = PlayerEffects.plugin.getConfig().getStringList("Effects." + effect);
@@ -70,7 +70,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 								}
 							}
 						}
-					}, 0, 10);
+					}, 0, 40);
 				}
 			}
 		}

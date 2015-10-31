@@ -1,7 +1,7 @@
 name: PlayerEffects
 author: WolfLeader116
 main: io.github.wolfleader116.playereffects.PlayerEffects
-version: 1.0.7
+version: 1.0.8
 description: PlayerEffects plugin.
 depend: [WolfAPI]
 commands:
