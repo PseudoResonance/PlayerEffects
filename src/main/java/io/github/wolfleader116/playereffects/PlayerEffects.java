@@ -49,6 +49,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 							if (!(players.isEmpty())) {
 								for (String player : players) {
 									if (Bukkit.getServer().getPlayer(player) != null) {
+										log.info("EFFECT IS " + effect.replace("doublehelix", ""));
 										createDoubleHelix(Bukkit.getServer().getPlayer(player).getLocation(), ParticleEffect.valueOf(effect.replace("doublehelix", "")));
 									}
 								}
@@ -65,6 +66,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 							if (!(players.isEmpty())) {
 								for (String player : players) {
 									if (Bukkit.getServer().getPlayer(player) != null) {
+										log.info("EFFECT IS " + effect.replace("helix", ""));
 										createHelix(Bukkit.getServer().getPlayer(player).getLocation(), ParticleEffect.valueOf(effect.replace("helix", "")));
 									}
 								}
