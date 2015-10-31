@@ -54,7 +54,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 								}
 							}
 						}
-					}, 0, 30);
+					}, 0, 10);
 				}
 			} else if (effect.endsWith("helix")) {
 				List<String> players = PlayerEffects.plugin.getConfig().getStringList("Effects." + effect);
@@ -70,7 +70,7 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 								}
 							}
 						}
-					}, 0, 30);
+					}, 0, 10);
 				}
 			}
 		}
@@ -84,9 +84,9 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 	public void createHelix(Location loc, final ParticleEffect effect) {
 		int radius = 1;
 		long da = (long) -1;
-		for (double y = 0; y <= 50; y+=0.5) {
-			da = (long) (da + 1);
-			if (y >= 7) {
+		for (double y = 0; y <= 4; y+=0.5) {
+			da = (long) (da + 2);
+			if (y > 4) {
 				break;
 			}
 			double x = radius * Math.cos(y);
@@ -107,9 +107,9 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 	public void createDoubleHelix(Location loc, final ParticleEffect effect) {
 		int radius = 1;
 		long da = (long) -1;
-		for (double y = 0; y <= 50; y+=0.5) {
-			da = (long) (da + 1);
-			if (y >= 7) {
+		for (double y = 0; y <= 4; y+=0.5) {
+			da = (long) (da + 2);
+			if (y > 4) {
 				break;
 			}
 			double x = radius * Math.cos(y);
