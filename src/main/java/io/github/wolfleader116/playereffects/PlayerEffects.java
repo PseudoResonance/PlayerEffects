@@ -14,6 +14,7 @@ import io.github.wolfleader116.wolfapi.ParticleEffect;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -56,7 +57,9 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 							List<String> players = PlayerEffects.plugin.getConfig().getStringList("Effects." + effect);
 							if (!(players.isEmpty())) {
 								for (String player : players) {
-									if (Bukkit.getServer().getPlayer(player) != null) {
+									Config settings = new Config("../Settings/playerdata", PlayerEffects.plugin);
+									Player p = Bukkit.getServer().getPlayer(player);
+									if ((Bukkit.getServer().getPlayer(player) != null) && (settings.getConfig().getBoolean("effects." + p.getUniqueId().toString()) || settings.getConfig().getString("effects." + p.getUniqueId().toString()) == null)) {
 										createDoubleHelix(Bukkit.getServer().getPlayer(player).getLocation(), ParticleEffect.valueOf((effect.replace("doublehelix", "")).toUpperCase()));
 									}
 								}
@@ -72,7 +75,9 @@ public class PlayerEffects extends JavaPlugin implements Listener {
 							List<String> players = PlayerEffects.plugin.getConfig().getStringList("Effects." + effect);
 							if (!(players.isEmpty())) {
 								for (String player : players) {
-									if (Bukkit.getServer().getPlayer(player) != null) {
+									Config settings = new Config("../Settings/playerdata", PlayerEffects.plugin);
+									Player p = Bukkit.getServer().getPlayer(player);
+									if ((Bukkit.getServer().getPlayer(player) != null) && (settings.getConfig().getBoolean("effects." + p.getUniqueId().toString()) || settings.getConfig().getString("effects." + p.getUniqueId().toString()) == null)) {
 										createHelix(Bukkit.getServer().getPlayer(player).getLocation(), ParticleEffect.valueOf((effect.replace("helix", "")).toUpperCase()));
 									}
 								}
